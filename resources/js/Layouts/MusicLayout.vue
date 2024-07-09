@@ -90,7 +90,22 @@
                     <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
                 </div>
             </div>
+
         </nav>
+        <div class="px-16">
+            <div class="flex justify-between items-center">
+                <h4 class="text-3xl font-bold my-6">
+                    <slot name="title" />
+                </h4>
+                <div>
+                    <slot name="action" />
+                </div>
+            </div>
+
+            <div>
+                <slot name="content" />
+            </div>
+        </div>
     </div>
 
 </template>
