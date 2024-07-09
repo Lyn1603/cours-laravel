@@ -52,8 +52,8 @@ class TrackController extends Controller
         $imageExtension = $request->image->extension();
         $imagepath =      $request->image->storAs('tracks/images', $uuid . '.' . $imageExtension);
 
-        $musicExtension = $request->image->extension();
-        $musicpath =      $request->image->storAs('tracks/musics', $uuid . '.' . $musicExtension);
+        $musicExtension = $request->music->extension();
+        $musicpath =      $request->music->storAs('tracks/musics', $uuid . '.' . $musicExtension);
 
         Track::create([
             'title' => $request->title,
