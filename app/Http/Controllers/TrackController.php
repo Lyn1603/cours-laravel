@@ -34,34 +34,35 @@ class TrackController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
+        //
         $request->validate([
-
-            'title' => ['required', 'string', 'min : 5 ', 'max : 255'],
-            'artist' => ['required', 'string', 'min : 5 ', 'max : 255'],
+            'title' => ['required', 'string', 'min:5', 'max:255'],
+            'artist' => ['required', 'string', 'min:3', 'max:255'],
             'display' => ['required', 'boolean'],
-            'image' => ['required', 'image', 'max:1000'],
-            'music' => ['required', 'file', 'mimes:mov,mp3,wav', ' max: 10000'],
-
-
+            'image' => ['required', 'image', ],
+            'music' => ['required', 'file', 'mimes:mp3,wav,mov'],
         ]);
 
-        $uuid = 'trk'.Str::uuid();
+        $uuid = 'trk-' . Str::uuid();
 
         $imageExtension = $request->image->extension();
-        $imagepath =      $request->image->storAs('tracks/images', $uuid . '.' . $imageExtension);
+        $imagePath = $request->image->storeAs('tracks/images', $uuid . '.' . $imageExtension);
 
         $musicExtension = $request->music->extension();
-        $musicpath =      $request->music->storAs('tracks/musics', $uuid . '.' . $musicExtension);
+        $musicPath = $request->music->storeAs('tracks/musics', $uuid . '.' . $musicExtension);
 
         Track::create([
+            'uuid' => $uuid,
             'title' => $request->title,
             'artist' => $request->artist,
             'display' => $request->display,
-            'image' => $imagepath,
-            'music' => $musicpath
-
+            'image' => $imagePath,
+            'music' => $musicPath,
         ]);
 
         return redirect()->route('tracks.index');
@@ -120,6 +121,7 @@ class TrackController extends Controller
     {
         $track->delete();
 
-        return Inertia::render('Track/Index');
+        return redirect()->route('tracks.index');
+
     }
 }

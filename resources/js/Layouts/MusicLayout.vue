@@ -32,11 +32,13 @@
                         </div>
                         <div class="hidden sm:ml-6 sm:block">
                             <div class="flex space-x-4">
-                                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                                <a href="#" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Team</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Projects</a>
-                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Calendar</a>
+                                <!-- New links for music and playlists -->
+                                <Link :href="route('tracks.index')" class=" bg-transparent hover:text-gray text-white font-bold rounded py-2 px-4" :class="[route().current().includes('tracks') ? 'bg-transparent hover:text-white' : 'bg-transparent hover:text-white']">
+                                    Mes musiques
+                                </Link>
+                                <Link :href="route('playlists.index')" class=" bg-transparent hover:text-gray text-white font-bold rounded py-2 px-4" :class="[route().current().includes('tracks') ? 'bg-transparent hover:text-white' : 'bg-transparent hover:text-white']">
+                                    Mes playlists
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -107,12 +109,15 @@
             </div>
         </div>
     </div>
-
 </template>
 
-
 <script>
+import { Link} from "@inertiajs/vue3";
+
 export default {
     name: 'MusicLayout',
+    components : {
+        Link
+    }
 }
 </script>

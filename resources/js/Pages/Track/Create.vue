@@ -1,99 +1,93 @@
 <template>
-
     <MusicLayout>
         <template #title>
-            Liste de mes tracks
+            Créer une musique
         </template>
-
         <template #action>
-            <Link :href="route('tracks.index')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link :href="route('tracks.index')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
                 Retour
             </Link>
         </template>
-
         <template #content>
-            Formulaire de création
             <form @submit.prevent="submit">
-                <div>
-                    <label for="title" > Titre </label>
-                    <br>
-                    <input id="title" v-model="form.title" type="text">
-                    <p class="text-red-500">{{ form.errors.title }}</p>
+                <!-- Titre -->
+                <div class="mb-3">
+                    <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Titre</label>
+                    <input id="title" v-model="form.title" type="text"
+                           class="shadow border rounded py-2 px-3 text-gray-700 appearance-none leading-tight focus:outline-none focus:shadow-outline mb-2"
+                           :class="{ 'border-red-500': form.errors.title }" placeholder="Titre">
+                    <p class="text-red-500 text-xs italic">{{ form.errors.title }}</p>
                 </div>
-                <div>
-                    <label for="artist" > Artiste </label>
-                    <br>
-                    <input id="artist" name="artist" v-model="form.artist" type="text">
-                    <p class="text-red-500">{{ form.errors.artist }}</p>
 
+                <!-- Artist -->
+                <div class="mb-3">
+                    <label for="artist" class="block text-gray-700 text-sm font-bold mb-2">Artiste</label>
+                    <input id="artist" v-model="form.artist" type="text"
+                           class="shadow border rounded py-2 px-3 text-gray-700 appearance-none leading-tight focus:outline-none focus:shadow-outline mb-2"
+                           :class="{ 'border-red-500': form.errors.artist }" placeholder="Artiste">
+                    <p class="text-red-500 text-xs italic">{{ form.errors.artist }}</p>
                 </div>
-                <div>
-                    <label for="artist" > Display </label>
-                    <br>
-                    <select name="display" id="display" v-model="form.display">
-                        <option :value="true" > Oui </option>
-                        <option :value="false"> Non </option>
 
+                <!-- Display -->
+                <div class="mb-3">
+                    <label for="artist" class="block text-gray-700 text-sm font-bold mb-2">Afficher la musique</label>
+                    <select name="display" id="display" v-model="form.display"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            :class="{ 'border-red-500': form.errors.display }">
+                        <option :value="true">Oui</option>
+                        <option :value="false">Non</option>
                     </select>
-                    <p class="text-red-500">{{ form.errors.display }}</p>
-
-                </div>
-                <div>
-                    <label for="image" > Image </label>
-                    <br>
-                    <input id="image" name="image" @input="form.image = $event.target.files[0]" type="file">
-
-                    <p class="text-red-500">{{ form.errors.image }}</p>
-
-                </div>
-                <div>
-                    <label for="audio" > Audio </label>
-                    <br>
-                    <input id="audio" name="audio" @input="form.music = $event.target.files[0]" type="file" >
-
-                    <p class="text-red-500">{{ form.errors.music }}</p>
-
+                    <p class="text-red-500 text-xs italic">{{ form.errors.display }}</p>
                 </div>
 
-                <input type="submit" value="Créer la musique"  class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+                <!-- Image -->
+                <div class="mb-3">
+                    <label for="image" class="block text-gray-700 text-sm font-bold mb-2">Image</label>
+                    <input @input="form.image = $event.target.files[0]" type="file" name="image" id="image">
+                    <p class="text-red-500 text-xs italic">{{ form.errors.image }}</p>
+                </div>
 
+                {{ form.errors }}
+                <!-- Audio -->
+                <div class="mb-3">
+                    <label for="audio" class="block text-gray-700 text-sm font-bold mb-2">Audio</label>
+                    <input @input="form.music = $event.target.files[0]" type="file" name="audio" id="audio">
+
+                    <p class="text-red-500 text-xs italic">{{ form.errors.audio }}</p>
+                </div>
+
+                <input type="submit" value="Créer la musique" class=" text-white font-bold rounded py-2 px-4"
+                       :class="[form.processing ? 'bg-gray-500' : 'bg-blue-500 hover:bg-blue-700']" :disabled="form.processing">
             </form>
-
-
         </template>
-
     </MusicLayout>
-
 </template>
 
 <script>
 import MusicLayout from '@/Layouts/MusicLayout.vue';
-import { Link } from '@inertiajs/vue3';
-
+import { Link  } from "@inertiajs/vue3";
 export default {
     name: 'Create',
     components: {
         MusicLayout,
-        Link
+        Link,
     },
-    data(){
-    return {
-        form: this.$inertia.form(
-            {
+    data() {
+        return {
+            form: this.$inertia.form({
                 title: '',
                 artist: '',
+                display: true,
                 image: null,
                 music: null,
-                display: true
-            }
-
-        )
-    }
+            }),
+        }
     },
-    methods : {
-        submit(){
-            console.log('submit');
-            this.form.post(route('tracks.store'));
+    methods: {
+        submit() {
+            this.form.post(route('tracks.store'), {
+                //preserveState: false,
+            });
         }
     }
 }

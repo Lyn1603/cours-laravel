@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\TrackController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,16 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    Route::name('playlists.')->prefix('playlists')->controller(PlaylistController::class)->group(function() {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::get('/{playlist}', 'show')->name('show');
+        Route::post('/', 'store')->name('store');
+        Route::get('/{playlist}/edit', 'edit')->name('edit');
+        Route::put('/{playlist}', 'update')->name('update');
+        Route::delete('/{playlist}', 'destroy')->name('destroy');
+    });
 });
 
 //Route::get('test', [HomeController::class, 'test']);
@@ -35,8 +46,8 @@ Route::name('tracks.')->prefix('tracks')->controller(TrackController::class)->gr
     Route::put('/{track}', 'update')->name('update');
     Route::delete('/{track}', 'destroy')->name('destroy');
 });
-//Route::resource('tracks', TrackController::class)->except('edit');
 
+//Route::resource('tracks', TrackController::class)->except('edit');
 
 
 
