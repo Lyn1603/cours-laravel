@@ -18,7 +18,7 @@ class PlaylistController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $playlists = $user->playlists()->with(['tracks'])->get();
+        $playlists = $user->playlists()->withCount(['tracks'])->get();
         /* dd($playlists); */
         return Inertia::render('Playlist/Index', [
             'playlists' => $playlists,
@@ -56,14 +56,13 @@ class PlaylistController extends Controller
             throw ValidationException::withMessage(' Cette musique n \'existe pas ! ');
         }
 
-        Playlist::create([
-
+        $playlist = Playlist::create([
             'uuid' => 'ply-' .Str::uuid(),
             'user_id' => $request->user()->id,
             'title' => $request->title
-
-
         ]);
+
+        $playlist->tracks()->attach($tracks->pluck('id'));
 
         return redirect()->route('playlists.index');
     }
@@ -75,7 +74,7 @@ class PlaylistController extends Controller
     {
         return Inertia::render('Playlist/Show', [
             'playlist' => $playlist,
-            'tracks' => $playlist->track,
+            'tracks' => $playlist->tracks,
         ]);
     }
 

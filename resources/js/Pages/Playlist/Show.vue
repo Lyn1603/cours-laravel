@@ -3,19 +3,20 @@
     <MusicLayout>
 
         <template #title>
-            Liste de mes tracks
+            Title Playlist
         </template>
 
         <template #action>
             <Link :href="route('tracks.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
-                Ajouter une musique
+                Add a music
+            </Link>
+            <Link :href="route('playlists.index')" class="bg-lime-300 hover:bg-lime-600 text-white font-bold rounded py-2 px-4">
+                Playlist
             </Link>
         </template>
 
         <template #content>
-            <div>
-                    <TrackList  :track="track" />
-            </div>
+            <TrackList :tracks="tracks" />
         </template>
 
     </MusicLayout>
@@ -23,20 +24,20 @@
 </template>
 
 <script>
-import { Link  } from "@inertiajs/vue3";
-import MusicLayout from "@/Layouts/MusicLayout.vue";
-import Tracks from "@/Components/Track.vue";
-import TrackList from "@/Components/TrackList.vue";
+import MusicLayout from '@/Layouts/MusicLayout.vue';
+import TrackList from '@/Components/TrackList.vue';
+import { Link } from '@inertiajs/vue3';
 
 export default {
     name: 'Show',
     components: {
         MusicLayout,
-        TrackList,
         Link,
+        TrackList
     },
-
+    props: {
+        playlist: Object,
+        tracks: Array,
+    }
 }
 </script>
-
-

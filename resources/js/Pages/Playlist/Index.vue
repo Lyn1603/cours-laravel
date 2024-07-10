@@ -8,7 +8,7 @@
 
         <template #action>
             <div class="flex space-x-4 mb-4">
-                <Link :href="route('playlists.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+                <Link  :href="route('playlists.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
                     Create a playlist
                 </Link>
                 <Link :href="route('tracks.index')" class="bg-lime-300 hover:bg-lime-600 text-white font-bold rounded py-2 px-4">

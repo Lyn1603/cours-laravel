@@ -1,14 +1,14 @@
 <template>
     <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white mt-8">
         <div class="px-6 py-4">
-            <img :src=" `storage/${track.image}` " alt="">
+            <img :src=" `/storage/${track.image}` " alt="">
             <div class="font-bold text-xl mb-2">
                Track  {{ track.title }}
             </div>
-            <Link :href="route('tracks.edit', {track : track})" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link v-if="$page.props.auth.user" :href="route('tracks.edit', {track : track})" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Modifier
             </Link>
-            <Link :href="route('tracks.destroy', {track : track})" as="button" method="delete" class="bg-red-500 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link v-if="$page.props.auth.user" :href="route('tracks.destroy', {track : track})" as="button" method="delete" class="bg-red-500 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Supprimer
             </Link>
 

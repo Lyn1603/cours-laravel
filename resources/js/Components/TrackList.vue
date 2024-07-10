@@ -1,18 +1,5 @@
 <template>
 
-    <MusicLayout>
-
-        <template #title>
-            Liste de mes tracks
-        </template>
-
-        <template #action>
-            <Link :href="route('tracks.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
-                Ajouter une musique
-            </Link>
-        </template>
-
-        <template #content>
             <div>
                 <input v-model='filter' type="search" class="shadow border rounded py-2 px-3 text-gray-600">
 
@@ -20,9 +7,6 @@
                     <Tracks v-for="track in filterTrack" :key="track.id" :track="track" @played="play(track)"/>
                 </div>
             </div>
-        </template>
-
-    </MusicLayout>
 
 </template>
 
