@@ -39,6 +39,9 @@
                                 <Link v-if="$page.props.auth.user" :href="route('playlists.index')" class=" bg-transparent hover:text-gray text-white font-bold rounded py-2 px-4" :class="[route().current().includes('tracks') ? 'bg-transparent hover:text-white' : 'bg-transparent hover:text-white']">
                                     Mes playlists
                                 </Link>
+                                <Link v-if="$page.props.auth.user" :href="route('apikey.index')" class=" bg-transparent hover:text-gray text-white font-bold rounded py-2 px-4" :class="[route().current().includes('tracks') ? 'bg-transparent hover:text-white' : 'bg-transparent hover:text-white']">
+                                    Mes clés api
+                                </Link>
                                 <Link v-if="!$page.props.auth.user" :href="route('login')" class=" bg-transparent hover:text-gray text-white font-bold rounded py-2 px-4" :class="[route().current().includes('tracks') ? 'bg-transparent hover:text-white' : 'bg-transparent hover:text-white']">
                                     Se connecter
                                 </Link>

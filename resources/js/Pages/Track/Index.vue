@@ -7,7 +7,7 @@
         </template>
 
         <template #action>
-            <Link v-if="$page.props.auth.user" :href="route('tracks.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link v-if="$page.props.isAdmin" :href="route('tracks.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Ajouter une musique
             </Link>
         </template>
@@ -29,7 +29,7 @@
 <script>
 import { Link  } from "@inertiajs/vue3";
 import MusicLayout from "@/Layouts/MusicLayout.vue";
-import Tracks from "@/Components/Track.vue";
+import Tracks from "@/Components/Track/Track.vue";
 
 export default {
     name: 'Index',

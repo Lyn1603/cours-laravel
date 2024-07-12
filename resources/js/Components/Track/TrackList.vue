@@ -13,7 +13,7 @@
 <script>
 import { Link  } from "@inertiajs/vue3";
 import MusicLayout from "@/Layouts/MusicLayout.vue";
-import Tracks from "@/Components/Track.vue";
+import Tracks from "@/Components/Track/Track.vue";
 
 export default {
     name: 'Index',

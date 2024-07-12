@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ApiKey;
 use App\Models\Track;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,6 +16,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Track::factory(10)->create();
+        User::factory(10)->create();
+
+
 
         User::factory()->create([
             'name' => 'Test User',

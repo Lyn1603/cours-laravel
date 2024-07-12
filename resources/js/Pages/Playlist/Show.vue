@@ -25,7 +25,7 @@
 
 <script>
 import MusicLayout from '@/Layouts/MusicLayout.vue';
-import TrackList from '@/Components/TrackList.vue';
+import TrackList from '@/Components/Track/TrackList.vue';
 import { Link } from '@inertiajs/vue3';
 
 export default {

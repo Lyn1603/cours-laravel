@@ -102,9 +102,7 @@ class TrackController extends Controller
 
         $track->title = $request->title;
         $track->artist = $request->artist;
-        $track->display= $request->title;
-        $track->image = $request->title;
-        $track->audio = $request->title;
+        $track->display= $request->display;
         $track->save();
 
         return redirect()->route('tracks.index');

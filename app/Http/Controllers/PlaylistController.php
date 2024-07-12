@@ -19,7 +19,6 @@ class PlaylistController extends Controller
     {
         $user = auth()->user();
         $playlists = $user->playlists()->withCount(['tracks'])->get();
-        /* dd($playlists); */
         return Inertia::render('Playlist/Index', [
             'playlists' => $playlists,
         ]);
@@ -97,8 +96,9 @@ class PlaylistController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Playlist$playlist)
+    public function destroy(Request $request, Playlist$playlist)
     {
-        //
+        $playlist->delete();
+
     }
 }

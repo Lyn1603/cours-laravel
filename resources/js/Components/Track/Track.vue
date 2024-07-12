@@ -5,10 +5,10 @@
             <div class="font-bold text-xl mb-2">
                Track  {{ track.title }}
             </div>
-            <Link v-if="$page.props.auth.user" :href="route('tracks.edit', {track : track})" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link v-if="$page.props.isAdmin" :href="route('tracks.edit', {track : track})" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Modifier
             </Link>
-            <Link v-if="$page.props.auth.user" :href="route('tracks.destroy', {track : track})" as="button" method="delete" class="bg-red-500 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link v-if="$page.props.isAdmin" :href="route('tracks.destroy', {track : track})" as="button" method="delete" class="bg-red-500 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Supprimer
             </Link>
 

@@ -38,26 +38,11 @@
                     <p class="text-red-500">{{ form.errors.display }}</p>
 
                 </div>
-                <div>
-                    <label for="image" > Image </label>
-                    <br>
-                    <input id="image" name="image" @input="form.image = $event.target.files[0]" type="file">
-
-                    <p class="text-red-500">{{ form.errors.image }}</p>
-
-                </div>
-                <div>
-                    <label for="audio" > Audio </label>
-                    <br>
-                    <input id="audio" name="audio" @input="form.music = $event.target.files[0]" type="file" >
-
-                    <p class="text-red-500">{{ form.errors.music }}</p>
-
-                </div>
 
                 <input type="submit" value="Modifier la musique"  class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
 
             </form>
+
 
 
         </template>
@@ -71,7 +56,7 @@ import MusicLayout from '@/Layouts/MusicLayout.vue';
 import { Link } from '@inertiajs/vue3';
 
 export default {
-    name: 'Create',
+    name: 'Edit',
     components: {
         MusicLayout,
         Link
@@ -82,8 +67,6 @@ export default {
                 {
                     title: this.track.title,
                     artist: this.track.artist,
-                    image: this.track.image,
-                    music: this.track.music,
                     display: this.track.display ? true : false,
                 }
 
@@ -96,7 +79,7 @@ export default {
     methods : {
         edit(){
             console.log('submit');
-            this.form.put(route('tracks.update') , { track: this.track });
+            this.form.put(route('tracks.update' , { track: this.track })  );
         }
     }
 }
