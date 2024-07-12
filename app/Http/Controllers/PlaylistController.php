@@ -96,7 +96,7 @@ class PlaylistController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Playlist$playlist)
+    public function destroy(Playlist$playlist)
     {
         $playlist->delete();
 

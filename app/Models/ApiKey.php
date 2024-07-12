@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 use App\Models\User;
 
@@ -20,6 +21,9 @@ class ApiKey extends Model
         'key'
     ];
 
+    public function getRouteKeyName() {
+        return 'uuid';
+    }
     protected static function boot()
     {
         parent::boot();
@@ -34,5 +38,7 @@ class ApiKey extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
 
 }

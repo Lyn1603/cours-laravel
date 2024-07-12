@@ -51,10 +51,9 @@ Route::middleware([
 
     Route::name('apikey.')->prefix('apikey')->controller(ApiKeyController::class)->group(function() {
 
-        Route::get('/playlists', 'index')->name('index');
+        Route::get('/', 'index')->name('index');
         Route::post('/', 'store')->name('store');
         Route::get('/create', 'create')->name('create');
-        Route::get('/{apikey}', 'show')->name('show');
         Route::delete('/{apikey}', 'destroy')->name('destroy');
     });
 

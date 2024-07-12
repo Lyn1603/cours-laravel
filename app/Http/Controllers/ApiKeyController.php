@@ -5,10 +5,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ApiKey;
-use App\Models\Track;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
+use function Webmozart\Assert\Tests\StaticAnalysis\uuid;
 
 class ApiKeyController extends Controller
 {
@@ -49,6 +50,22 @@ class ApiKeyController extends Controller
         return redirect()->route('apikey.index');
 
 
+
+    }
+
+    public function destroy($apiKey)
+    {
+        $user = auth()->user();
+        $api = $user->apikey;
+
+        foreach ($api as $key) {
+
+            if($key['uuid'] == $apiKey) {
+                $key->delete();
+            }
+        }
+
+        return redirect()->route('apikey.index');
 
     }
 }
