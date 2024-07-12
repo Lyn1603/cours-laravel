@@ -4,7 +4,10 @@
             <div class="font-bold text-xl mb-2">
                 {{ apiKey.name }}
             </div>
-            <Link v-if="$page.props.isAdmin" :href="route('apiKey.destroy', {apiKey : apiKey})" as="button" method="delete" class="bg-red-500 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <div class="font-bold text-xl mb-2">
+                {{ apiKey.key }}
+            </div>
+            <Link v-if="$page.props.auth.user" :href="route('apiKey.destroy', {apiKey : apiKey})" as="button" method="delete" class="bg-red-500 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
                 Supprimer
             </Link>
 
@@ -17,8 +20,7 @@ import { Link  } from "@inertiajs/vue3";
 
 export default {
 
-    name: 'Track',
-    emits : ['played'],
+    name: 'ApiCard',
     components : {
         Link,
     },

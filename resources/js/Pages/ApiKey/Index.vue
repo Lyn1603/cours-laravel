@@ -1,59 +1,59 @@
 <template>
-
     <MusicLayout>
-
         <template #title>
-            Liste de mes clés
+            <h1 class="text-2xl font-bold mb-4">List of playlists</h1>
         </template>
 
         <template #action>
-            <Link v-if="$page.props.auth.user" :href="route('apikey.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
-                Ajouter une clé
-            </Link>
-        </template>
-
-        <template #content>
-            <div>
-                <input v-model='filter' type="search" class="shadow border rounded py-2 px-3 text-gray-600">
-
-                <div class="grid grid-cols-4 gap-4">
-                    <ApiCard :key="apiKey.id" :apiKey="apiKey" />
-                </div>
+            <div class="flex space-x-4 mb-4">
+                <Link :href="route('apikey.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+                    Create a playlist
+                </Link>
+                <Link :href="route('apikey.index')" class="bg-lime-300 hover:bg-lime-600 text-white font-bold rounded py-2 px-4">
+                    Musics
+                </Link>
             </div>
         </template>
 
+        <template #content>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-300">
+                    <thead>
+                    <tr class="bg-gray-200 text-left">
+                        <th class="py-2 px-4 border-b">ID</th>
+                        <th class="py-2 px-4 border-b">Name of the key</th>
+                        <th class="py-2 px-4 border-b">Key</th>
+                        <th class="py-2 px-4 border-b">Created at</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(api, i) in apikeys" :key="api.uuid" class="hover:bg-gray-100">
+                        <td class="py-2 px-4 border-b">{{ i + 1 }}</td>
+                        <td class="py-2 px-4 border-b">{{ api.name }}</td>
+                        <td class="py-2 px-4 border-b">{{ api.key }}</td>
+                        <td class="py-2 px-4 border-b">
+                            <Link :href="route('apikey.show', { apikey: api.uuid })">Link</Link>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </template>
     </MusicLayout>
-
 </template>
 
 <script>
-import { Link  } from "@inertiajs/vue3";
-import MusicLayout from "@/Layouts/MusicLayout.vue";
-import ApiCard from "@/Components/Api/ApiCard.vue";
+import MusicLayout from '@/Layouts/MusicLayout.vue';
+import { Link } from '@inertiajs/vue3';
 
 export default {
     name: 'Index',
     components: {
         MusicLayout,
-        ApiCard,
-        Link,
-    },
-    data (){
-        return{
-            filter: ''
-
-        }
+        Link
     },
     props: {
-        apiKey: Array,
-    },
-    computed: {
-        filterApi(){
-            return this.apiKey.filter(keys => keys.name.toLowerCase().includes(this.filter.toLowerCase()))
-        }
-    },
-
-}
+        apikeys: Array
+    }
+};
 </script>
-
-

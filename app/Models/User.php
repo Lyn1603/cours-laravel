@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\ApiKey;
 
 class User extends Authenticatable
 {
@@ -72,7 +73,7 @@ class User extends Authenticatable
         return $this->hasMany(Playlist::class);
     }
 
-    public function apiKeys()
+    public function apikey() : HasMany
     {
         return $this->hasMany(ApiKey::class);
     }

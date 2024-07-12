@@ -16,7 +16,7 @@ import MusicLayout from "@/Layouts/MusicLayout.vue";
 import Tracks from "@/Components/Track/Track.vue";
 
 export default {
-    name: 'Index',
+    name: 'TrackList',
     components: {
         MusicLayout,
         Tracks,
