@@ -15,7 +15,7 @@
             </div>
         </template>
 
-        <template #content>
+        <template  #content>
             <div class="overflow-x-auto">
                 <table class="min-w-full ">
                     <thead>
@@ -65,3 +65,11 @@ export default {
     }
 };
 </script>
+
+
+<style>
+
+body {
+    background-color: #ddc477;
+}
+</style>
