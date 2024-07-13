@@ -13,15 +13,17 @@
 
                     <button class="bg-[#c3b377] h-12 w-12 rounded mr-2"
                             @click="handleClick">
-                        <svg  width="50px" height="45px" viewBox="0 0 24 24" fill="none"
-                             xmlns="http://www.w3.org/2000/svg">
+                        <svg v-if="isPlaying" width="50px" height="45px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 19L10 5M14 19L14 5"
+                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <svg v-else width="50px" height="45px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M16.6582 9.28638C18.098 10.1862 18.8178 10.6361 19.0647 11.2122C19.2803 11.7152 19.2803 12.2847 19.0647 12.7878C18.8178 13.3638 18.098 13.8137 16.6582 14.7136L9.896 18.94C8.29805 19.9387 7.49907 20.4381 6.83973 20.385C6.26501 20.3388 5.73818 20.0469 5.3944 19.584C5 19.053 5 18.1108 5 16.2264V7.77357C5 5.88919 5 4.94701 5.3944 4.41598C5.73818 3.9531 6.26501 3.66111 6.83973 3.6149C7.49907 3.5619 8.29805 4.06126 9.896 5.05998L16.6582 9.28638Z"
                                 stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
                         </svg>
                     </button>
-
-
 
                     <Link v-if="$page.props.isAdmin" :href="route('tracks.edit', {track: track})"
                           class="bg-[#c3b377] text-[#f6ed95] h-12 w-12 font-bold rounded py-2 px-4">
@@ -45,7 +47,6 @@
 </svg>
                     </Link>
 
-
                     <Link v-if="$page.props.isAdmin" :href="route('tracks.destroy', {track: track})" as="button"
                           method="delete" class="bg-red-300 rounded py-2 px-4 h-12 w-12">
                         <svg style="position: relative; right: 55%; bottom: 20%;" width="35px" height="45px" viewBox="0 -0.5 21 21" version="1.1"
@@ -66,7 +67,6 @@
                         </svg>
                     </Link>
 
-
                 </div>
             </div>
         </div>
@@ -75,7 +75,6 @@
 
 <script>
 import {Link} from "@inertiajs/vue3";
-
 
 export default {
     name: 'Track',
@@ -86,8 +85,14 @@ export default {
     props: {
         track: Object
     },
+    data() {
+        return {
+            isPlaying: false
+        };
+    },
     methods: {
         handleClick() {
+            this.isPlaying = !this.isPlaying;
             this.$emit('played', this.track)
         }
     }

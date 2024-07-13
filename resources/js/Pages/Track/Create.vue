@@ -14,7 +14,7 @@
                 <div class="mb-3">
                     <label for="title" class="block text-gray-700 text-lg font-bold mb-2">Title</label>
                     <input id="title" v-model="form.title" type="text"
-                           class=" bg-[#c3b377] text-[#f6ed95] shadow rounded py-2 px-3  appearance-none leading-tight focus:outline-none focus:shadow-outline mb-2"
+                           class=" bg-[#c3b377] shadow rounded py-2 px-3  appearance-none leading-tight focus:outline-none focus:shadow-outline mb-2 text-[#f6ed95]"
                            :class="{ 'border-red-500': form.errors.title }" placeholder="Titre">
                     <p class="text-red-500 text-xs italic">{{ form.errors.title }}</p>
                 </div>
@@ -23,7 +23,8 @@
                 <div class="mb-3">
                     <label for="artist" class="block text-gray-700 text-lg font-bold mb-2">Artist</label>
                     <input id="artist" v-model="form.artist" type="text"
-                           class=" bg-[#c3b377] text-[#f6ed95] shadow rounded py-2 px-3  appearance-none leading-tight focus:outline-none focus:shadow-outline mb-2"                           :class="{ 'border-red-500': form.errors.artist }" placeholder="Artiste">
+                           class=" bg-[#c3b377] text-[#f6ed95] shadow rounded py-2 px-3  appearance-none leading-tight focus:outline-none focus:shadow-outline mb-2"
+                           :class="{ 'border-red-500': form.errors.artist }" placeholder="Artist">
                     <p class="text-red-500 text-xs italic">{{ form.errors.artist }}</p>
                 </div>
 
@@ -95,5 +96,10 @@ export default {
 
 body {
     background-color: #ddc477;
+
+    #artist {
+        background-color: #c3b377;
+        color: #f6ed95;
+    }
 }
 </style>
