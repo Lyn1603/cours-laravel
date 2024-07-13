@@ -38,7 +38,7 @@
                         <td class=" flex flex-row py-2 px-4  justify-center gap-4 ">
                             <Link :href="route('playlists.show', { playlist : playlist })" class="text-[#BB8F67] font-bold hover:underline">Show</Link>
 
-                            <Link :href="route('playlists.destroy', { playlist : playlist })" class="text-red-500 font-bold hover:underline">Delete</Link>
+                            <Link as="button" method="DELETE" :href="route('playlists.destroy', { playlist : playlist })" class="text-red-500 font-bold hover:underline">Delete</Link>
                         </td>
                     </tr>
                     </tbody>
@@ -63,3 +63,10 @@ export default {
     },
 }
 </script>
+
+<style>
+
+body{
+    background-color: #ddc477;
+}
+</style>
