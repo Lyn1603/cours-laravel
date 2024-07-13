@@ -69,4 +69,8 @@ export default {
 body{
     background-color: #ddc477;
 }
+
+td {
+    background-color: #ddc477;
+}
 </style>

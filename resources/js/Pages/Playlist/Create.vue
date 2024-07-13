@@ -1,7 +1,5 @@
 <template>
-
     <MusicLayout>
-
         <template #title>
             Create a playlist
         </template>
@@ -13,7 +11,6 @@
         </template>
 
         <template #content>
-
             <form @submit.prevent="submit">
                 <!-- Playlist title -->
                 <div class="mb-3">
@@ -23,19 +20,16 @@
                 </div>
 
                 <!-- Tracks -->
-                <div v-for="track in tracks" :key="track.uuid">
-                    <input :id="track.uuid" :value="track.uuid" v-model="form.tracks" type="checkbox" name="tracks" class="mr-5">
-                    <label :for="track.uuid">{{ track.title }}</label>
+                <div v-for="track in tracks" :key="track.uuid" class="flex items-center mb-2">
+                    <input :id="track.uuid" :value="track.uuid" v-model="form.tracks" type="checkbox" name="tracks" class="form-checkbox mr-2">
+                    <label :for="track.uuid" class="text-gray-700">{{ track.title }}</label>
                 </div>
                 <br>
                 <input type="submit" value="Create" class="bg-[#c3b377] text-[#f6ed95] font-bold rounded py-2 px-4"
                        :class="[form.processing ? 'bg-[#c3b377]' : 'bg-[#c3b377]']" :disabled="form.processing">
             </form>
-
         </template>
-
     </MusicLayout>
-
 </template>
 
 <script>
@@ -67,3 +61,25 @@ export default {
     }
 }
 </script>
+
+<style>
+body {
+    background-color: #ddc477;
+}
+
+.form-checkbox {
+    accent-color: #f6ed95; /* Change this to your desired color */
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+input[type="submit"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+</style>
