@@ -1,7 +1,7 @@
 <template>
     <MusicLayout>
         <template #title>
-            <h1 class="text-2xl font-bold mb-4"> My keys </h1>
+            <h1 class="text-3xl font-bold text-gray-800"> My api keys </h1>
         </template>
 
         <template #action>
