@@ -7,7 +7,7 @@
         </template>
 
         <template #action>
-            <Link :href="route('playlists.index')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+            <Link :href="route('playlists.index')" class="bg-[#c3b377] text-[#f6ed95] font-bold rounded py-2 px-4">
                 Return
             </Link>
         </template>
@@ -17,8 +17,8 @@
             <form @submit.prevent="submit">
                 <!-- Playlist title -->
                 <div class="mb-3">
-                    <label for="title" class="block text-gray-700 text-sm font-bold mb-3">Title</label>
-                    <input v-model="form.title" type="text" id="title" placeholder="Title" class="shadow border rounded py-2 px-3 text-gray-700 appearance-none leading-tight focus:outline-none focus:shadow-outline mb-5">
+                    <label for="title" class="block text-gray-700 text-lg font-bold mb-3">Title</label>
+                    <input v-model="form.title" type="text" id="title" placeholder="Title" class="bg-[#c3b377] text-[#f6ed95] shadow rounded-lg py-2 px-4 placeholder-[#f6ed95] focus:outline-none focus:ring-2 focus:ring-c39977 focus:border-transparent sm:w-96">
                     <p class="text-red-400 text-xs italic">{{ form.errors.title }}</p>
                 </div>
 
@@ -27,10 +27,9 @@
                     <input :id="track.uuid" :value="track.uuid" v-model="form.tracks" type="checkbox" name="tracks" class="mr-5">
                     <label :for="track.uuid">{{ track.title }}</label>
                 </div>
-
-                {{form.tracks}}
-                <input type="submit" value="Create playlist" class="bg-blue-700 hover:bg-blue-300 text-white rounded py-2 px-4"
-                       :class="[form.processing ? 'bg-gray-500' : 'bg-blue-300 hover:bg-blue-600']" :disabled="form.processing">
+                <br>
+                <input type="submit" value="Create" class="bg-[#c3b377] text-[#f6ed95] font-bold rounded py-2 px-4"
+                       :class="[form.processing ? 'bg-[#c3b377]' : 'bg-[#c3b377]']" :disabled="form.processing">
             </form>
 
         </template>

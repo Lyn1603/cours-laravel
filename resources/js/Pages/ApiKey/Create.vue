@@ -1,27 +1,26 @@
 <template>
     <MusicLayout>
         <template #title>
-            Créer une musique
+            Create an api key
         </template>
         <template #action>
-            <Link :href="route('apikey.index')" class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
-                Retour
+            <Link :href="route('apikey.index')" class="bg-[#c3b377] text-[#f6ed95] font-bold rounded py-2 px-4">
+                Back
             </Link>
         </template>
         <template #content>
             <form @submit.prevent="submit">
                 <!-- Titre -->
                 <div class="mb-3">
-                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Nom de la clé</label>
+                    <label for="name" class="block text-gray-700 text-lg font-bold mb-2">Name</label>
                     <input id="name" v-model="form.name" type="text"
-                           class="shadow border rounded py-2 px-3 text-gray-700 appearance-none leading-tight focus:outline-none focus:shadow-outline mb-2"
-                           :class="{ 'border-red-500': form.errors.name }" placeholder="nom">
+                           class="bg-[#c3b377] text-[#f6ed95] shadow rounded-lg py-2 px-4 placeholder-[#f6ed95] focus:outline-none focus:ring-2 focus:ring-c39977 focus:border-transparent sm:w-96"
+                           :class="{ 'border-red-500': form.errors.name }" placeholder="name">
                     <p class="text-red-500 text-xs italic">{{ form.errors.name }}</p>
                 </div>
-
-
-                <input type="submit" value="Créer la clé" class=" text-white font-bold rounded py-2 px-4"
-                       :class="[form.processing ? 'bg-gray-500' : 'bg-blue-500 hover:bg-blue-700']" :disabled="form.processing">
+                <br>
+                <input type="submit" value="Create" class="bg-[#c3b377] text-[#f6ed95] font-bold rounded py-2 px-4"
+                       :class="[form.processing ? 'bg-[#c3b377]' : 'bg-[#c3b377]']" :disabled="form.processing">
             </form>
         </template>
     </MusicLayout>

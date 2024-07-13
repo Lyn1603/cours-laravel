@@ -100,5 +100,7 @@ class PlaylistController extends Controller
     {
         $playlist->delete();
 
+        return redirect()->route('playlists.index');
+
     }
 }

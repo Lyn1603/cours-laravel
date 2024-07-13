@@ -31,8 +31,6 @@ Route::middleware([
         Route::get('/create', 'create')->name('create');
         Route::get('/{playlist}', 'show')->name('show');
         Route::post('/', 'store')->name('store');
-        Route::get('/{playlist}/edit', 'edit')->name('edit');
-        Route::put('/{playlist}', 'update')->name('update');
         Route::delete('/{playlist}', 'destroy')->name('destroy');
     });
 

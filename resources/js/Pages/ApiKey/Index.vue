@@ -6,10 +6,10 @@
 
         <template #action>
             <div class="flex space-x-4 mb-4">
-                <Link :href="route('apikey.create')" class="bg-blue-300 hover:bg-blue-600 text-white font-bold rounded py-2 px-4">
+                <Link :href="route('apikey.create')" class="bg-[#c3b377] text-[#f6ed95] font-bold rounded py-2 px-4">
                     Create a key
                 </Link>
-                <Link :href="route('tracks.index')" class="bg-lime-300 hover:bg-lime-600 text-white font-bold rounded py-2 px-4">
+                <Link :href="route('tracks.index')"  class="bg-[#c3b377] text-[#f6ed95] font-bold rounded py-2 px-4">
                     Back
                 </Link>
             </div>
@@ -17,22 +17,22 @@
 
         <template #content>
             <div class="overflow-x-auto">
-                <table class="min-w-full bg-white border border-gray-300">
+                <table class="min-w-full ">
                     <thead>
-                    <tr class="bg-gray-200 text-left">
-                        <th class="py-2 px-4 border-b">ID</th>
-                        <th class="py-2 px-4 border-b">Name of the key</th>
-                        <th class="py-2 px-4 border-b">Key</th>
-                        <th class="py-2 px-4 border-b">Created at</th>
+                    <tr class="bg-[#c3b377] text-[#f6ed95]">
+                        <th class="py-2 px-4 text-center">ID</th>
+                        <th class="py-2 px-4 text-center">Name of the key</th>
+                        <th class="py-2 px-4 text-center">Key</th>
+                        <th class="py-2 px-4 text-center">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="(api, i) in apikeys" :key="api.uuid" class="hover:bg-gray-100">
-                        <td class="py-2 px-4 border-b">{{ i + 1 }}</td>
-                        <td class="py-2 px-4 border-b">{{ api.name }}</td>
-                        <td class="py-2 px-4 border-b">{{ api.key }}</td>
-                        <td class="py-2 px-4 border-b">
-                            <button @click="deleteApiKey(api.uuid)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded ml-2">
+                    <tr v-for="(api, i) in apikeys" :key="api.uuid" >
+                        <td class="py-2 px-4 text-center ">{{ i + 1 }}</td>
+                        <td class="py-2 px-4 text-center ">{{ api.name }}</td>
+                        <td class="py-2 px-4 text-center ">{{ api.key }}</td>
+                        <td class="py-2 px-4 text-center">
+                            <button @click="deleteApiKey(api.uuid)" class="text-red-500 font-bold py-1 px-2 rounded ml-2 hover:underline">
                                 Delete
                             </button>
                         </td>
