@@ -95,7 +95,8 @@ export default {
 <style>
 
 body {
-    background-color: #ddc477;
+    background-color: #ede7e0;
+    color: #462f1b;
 
     #artist {
         background-color: #c3b377;

@@ -10,18 +10,18 @@ use Illuminate\Support\Facades\Auth;
 
 class PlaylistController extends Controller
 {
-public function index(Request $request)
-{
-$user = Auth::user();
+    public function index(Request $request)
+    {
+        $user = Auth::user();
 
-if (!$user) {
-return response()->json(['error' => 'Unauthorized'], 401);
-}
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
 
-// Charge les playlists de l'utilisateur avec le compte des pistes
-$playlists = $user->playlists()->withCount('tracks')->get();
+        // Charge les playlists de l'utilisateur avec le compte des pistes
+        $playlists = $user->playlists()->withCount('tracks')->get();
 
-// Retourne les playlists au format JSON
-return response()->json($playlists);
-}
+        // Retourne les playlists au format JSON
+        return response()->json($playlists);
+    }
 }

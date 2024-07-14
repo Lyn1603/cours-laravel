@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\ApiKey;
+use Illuminate\Support\Facades\Auth;
 
 class CheckApiKey
 {
@@ -12,7 +13,7 @@ class CheckApiKey
         $apiKey = ApiKey::where('key', request()->header('x-api-key'))->first();
         $playlists = $apiKey->user->playlists()->get();
 
-
         return response()->json($playlists);
+
     }
 }

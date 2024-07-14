@@ -66,11 +66,13 @@ export default {
 
 <style>
 
-body{
-    background-color: #ddc477;
+
+body {
+    background-color: #ede7e0;
+    color: #462f1b;
 }
 
 td {
-    background-color: #ddc477;
+    background-color: rgba(217, 199, 143, 0.64);
 }
 </style>

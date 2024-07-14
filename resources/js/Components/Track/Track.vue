@@ -1,6 +1,6 @@
 <template>
     <div class=" flex flex-wrap justify-center mt-8">
-        <div class=" bg-[#c39977] flex flex-row rounded overflow-hidden shadow-lg m-4">
+        <div class=" bg-[#d9c78f] flex flex-row rounded overflow-hidden shadow-lg m-2">
             <div class="px-6 py-4">
                 <img :src="`/storage/${track.image}`" alt="" class="w-full">
                 <div class=" mb-2">

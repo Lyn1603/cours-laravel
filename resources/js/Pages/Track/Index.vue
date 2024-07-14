@@ -1,9 +1,9 @@
 <template>
-    <div class="bg-[#ddc477] py-8 px-4"> <!-- Utilisation de bg-yellow-100 pour un jaune plus pâle -->
+    <div class="bg-[#ede7e0] py-8 px-4"> <!-- Utilisation de bg-yellow-100 pour un jaune plus pâle -->
         <MusicLayout>
 
             <template #title>
-                <h1 class="text-3xl font-bold text-gray-800"> My tracks</h1>
+                <h1 class=" text-[#462f1b] text-3xl font-bold "> My tracks</h1>
             </template>
 
             <template #action>
@@ -86,3 +86,9 @@ export default {
     }
 }
 </script>
+
+<style>
+body {
+    color: #462f1b;
+}
+</style>
