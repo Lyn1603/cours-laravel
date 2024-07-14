@@ -12,10 +12,8 @@ class PlaylistController extends Controller
 {
 public function index(Request $request)
 {
-// Récupère l'utilisateur authentifié
 $user = Auth::user();
 
-// Vérifie si l'utilisateur est authentifié
 if (!$user) {
 return response()->json(['error' => 'Unauthorized'], 401);
 }
