@@ -65,6 +65,8 @@ export default {
 <style>
 body {
     background-color: #ede7e0;
+    color: #462f1b;
+
 }
 
 .form-checkbox {
